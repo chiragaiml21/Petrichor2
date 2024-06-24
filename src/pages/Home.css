@@ -1,0 +1,7 @@
+.hero{
+    background-image: url("../assets/Banner.jpeg");
+    /* background-color: yellow; */
+    background-repeat: none;
+    background-size: cover;
+    background-position: center;
+}
