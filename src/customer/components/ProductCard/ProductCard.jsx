@@ -1,24 +1,21 @@
 import React from 'react';
 
-function ProductCard() {
-  return (
-    <div className="mx-auto mt-11 w-80 transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-md duration-300 hover:scale-105 hover:shadow-lg">
+const ProductCard = ({ title, description, price, imageUrl, link }) => (
+  <a href={link} className="group block w-72 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <div className="relative aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200">
       <img
-        className="h-48 w-full object-cover object-center"
-        src="https://images.unsplash.com/photo-1674296115670-8f0e92b1fddb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        alt="Product Image"
+        src={imageUrl}
+        alt={title}
+        className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+        style={{ width: '100%', height: '250px' }} // Fixed height
       />
-      <div className="p-4">
-        <h2 className="mb-2 text-lg font-medium dark:text-white text-gray-900">Product Name</h2>
-        <p className="mb-2 text-base dark:text-gray-300 text-gray-700">Product description goes here.</p>
-        <div className="flex items-center">
-          <p className="mr-2 text-lg font-semibold text-gray-900 dark:text-white">$20.00</p>
-          <p className="text-base font-medium text-gray-500 line-through dark:text-gray-300">$25.00</p>
-          <p className="ml-auto text-base font-medium text-green-500">20% off</p>
-        </div>
-      </div>
     </div>
-  );
-}
+    <div className="p-4">
+      <h3 className="text-sm text-gray-700">{title}</h3>
+      <p className="text-base text-gray-900 mt-1">{description}</p>
+      <p className="text-lg font-medium text-gray-900 mt-2">${price.toFixed(2)}</p>
+    </div>
+  </a>
+);
 
 export default ProductCard;

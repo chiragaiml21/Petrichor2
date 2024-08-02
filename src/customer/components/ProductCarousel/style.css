@@ -1,0 +1,37 @@
+
+  
+  .custom-arrow {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 40%;
+    z-index: 10;
+  }
+  
+  .prev-arrow {
+    left: 10px; /* Adjust positioning as needed */
+  }
+  
+  .next-arrow {
+    right: 10px; /* Adjust positioning as needed */
+  }
+  
+  .arrow-icon {
+    font-size: 30px;
+    color: #333; /* Change arrow color as needed */
+  }
+  
+  /* Ensure carousel items are styled properly */
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

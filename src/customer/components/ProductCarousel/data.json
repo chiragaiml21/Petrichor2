@@ -1,0 +1,75 @@
+{
+    "products": [
+      {
+        "title": "Mud Dinner Plate Set",
+        "description": "A set of beautifully crafted mud dinner plates.",
+        "price": 29.99,
+        "imageUrl": "https://m.media-amazon.com/images/I/71gvy8luNdL.jpg",
+        "link": "https://example.com/product/mud-dinner-plate-set"
+      },
+      {
+        "title": "Traditional Clay Pot",
+        "description": "A traditional clay pot perfect for cooking.",
+        "price": 24.99,
+        "imageUrl": "https://m.media-amazon.com/images/I/71btCnSENZL.jpg",
+        "link": "https://example.com/product/traditional-clay-pot"
+      },
+      {
+        "title": "Clay Mug Set",
+        "description": "A set of rustic clay mugs for everyday use.",
+        "price": 19.99,
+        "imageUrl": "https://ksionline.in/wp-content/uploads/2023/01/D2-MUG-SET-OF-4-1.jpg",
+        "link": "https://example.com/product/clay-mug-set"
+      },
+      {
+        "title": "Decorative Clay Vase",
+        "description": "A beautifully decorated clay vase for your home.",
+        "price": 34.99,
+        "imageUrl": "https://cdn.pixelspray.io/v2/black-bread-289bfa/TIw66q/wrkr/t.resize(h:1240,w:1400)/data/Westelm/29082022img/7558366_9.jpg",
+        "link": "https://example.com/product/decorative-clay-vase"
+      },
+      {
+        "title": "Clay Cooking Pan",
+        "description": "A clay cooking pan ideal for traditional recipes.",
+        "price": 39.99,
+        "imageUrl": "https://ezahk.com/cdn/shop/products/71eI6udxfHL._SL1500_ee589449-9157-4298-91f1-31a499bf977e.jpg?v=1660804790&width=14451",
+        "link": "https://example.com/product/clay-cooking-pan"
+      },
+      {
+        "title": "Modern Clay Serving Bowl",
+        "description": "A modern serving bowl made from high-quality clay.",
+        "price": 24.99,
+        "imageUrl": "https://5.imimg.com/data5/ANDROID/Default/2023/12/365531843/SC/ZP/GO/91504303/product-jpeg.jpg",
+        "link": "https://example.com/product/modern-clay-serving-bowl"
+      },
+      {
+        "title": "Handcrafted Clay Pitcher",
+        "description": "A handcrafted clay pitcher for serving beverages.",
+        "price": 29.99,
+        "imageUrl": "https://images-cdn.ubuy.co.in/660b988a4f591a3ade5e80ad-hakan-handmade-traditional-unglazed-clay.jpg",
+        "link": "https://example.com/product/handcrafted-clay-pitcher"
+      },
+      {
+        "title": "Outdoor Clay Lantern",
+        "description": "A charming clay lantern for outdoor decor.",
+        "price": 44.99,
+        "imageUrl": "https://gachwala.in/wp-content/uploads/2023/03/lantern-3.jpg",
+        "link": "https://example.com/product/outdoor-clay-lantern"
+      },
+      {
+        "title": "Limited Edition Clay Tureen",
+        "description": "A limited edition clay tureen for special occasions.",
+        "price": 59.99,
+        "imageUrl": "https://ikiru.in/cdn/shop/files/buy-serving-bowl-ruchira-patram-by-trance-terra-on-ikiru-online-store-1_512x450.png?v=1715175774",
+        "link": "https://example.com/product/limited-edition-clay-tureen"
+      },
+      {
+        "title": "Classic Clay Tea Set",
+        "description": "A classic clay tea set for serving guests.",
+        "price": 49.99,
+        "imageUrl": "https://newbasics.in/wp-content/uploads/2020/12/Tea-Pot_1.png",
+        "link": "https://example.com/product/classic-clay-tea-set"
+      }
+    ]
+  }
+  

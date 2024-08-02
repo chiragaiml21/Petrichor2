@@ -7,7 +7,7 @@ function Carousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % CarouselImages.length);
-    }, 3000); // Slide interval: 3000ms (3 seconds)
+    }, 5000); // Slide interval: 3000ms (3 seconds)
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [CarouselImages.length]);
