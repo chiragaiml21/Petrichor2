@@ -1,25 +1,13 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// import signIn function from wherever it is defined
 
 function SignIn() {
   const navigate = useNavigate();
-
-  const handleGoogleSignIn = () => {
-    // Logic for Google sign-in (e.g., call a signIn function)
-    signIn('google');
-  };
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    // Logic for form submission, like authentication
-  };
 
   return (
     <div className="flex justify-center items-center">
       <div className="sm:w-2/3 lg:w-4/12 py-28">
         <h1 className="text-center text-4xl font-bold mb-6">Login</h1>
-        <form onSubmit={handleFormSubmit} className="px-8 py-10 w-full">
+        <form className="px-8 py-10 w-full">
           <div className="mb-4">
             <input
               className="w-full border p-4"
@@ -40,7 +28,6 @@ function SignIn() {
           </div>
           <div className="flex items-center justify-between py-4">
             <button 
-              onClick={handleGoogleSignIn}
               type="button" 
               className="text-white w-1/2 bg-[#b29a76] hover:bg-[#b29a76]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium text-sm px-8 sm:px-5 py-2.5 text-center inline-flex items-center justify-between mb-2"
             >

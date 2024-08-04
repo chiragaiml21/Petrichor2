@@ -165,7 +165,7 @@ export default function Header() {
                   {navigation.categories.map((category) => (
                     <Tab
                       key={category.name}
-                      className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 data-[selected]:border-indigo-600 data-[selected]:text-indigo-600"
+                      className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 data-[selected]:border-[#b29a76] data-[selected]:text-[#b29a76]"
                     >
                       {category.name}
                     </Tab>
@@ -181,10 +181,10 @@ export default function Header() {
                           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                             <img alt={item.imageAlt} src={item.imageSrc} className="object-cover object-center" />
                           </div>
-                          <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                          <button  onClick={()=>setOpen(false)} className="mt-6 block font-medium text-gray-900">
                             <span aria-hidden="true" className="absolute inset-0 z-10" />
                             {item.name}
-                          </a>
+                          </button>
                           <p aria-hidden="true" className="mt-1">
                             Shop now
                           </p>
@@ -203,9 +203,9 @@ export default function Header() {
                         >
                           {section.items.map((item) => (
                             <li key={item.name} className="flow-root">
-                              <a href={item.href} className="-m-2 block p-2 text-gray-500">
+                              <button onClick={()=>setOpen(false)} className="-m-2 block p-2 text-gray-500">
                                 {item.name}
-                              </a>
+                              </button>
                             </li>
                           ))}
                         </ul>
@@ -228,14 +228,24 @@ export default function Header() {
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               <div className="flow-root">
-                <button onClick={()=>navigate('/signin')} className="-m-2 block p-2 font-medium text-gray-900">
+                <button 
+                onClick={()=>{
+                  navigate('/signin');
+                  setOpen(false);
+                }} 
+                className="-m-2 block p-2 font-medium text-gray-900">
                   Sign in
                 </button>
               </div>
               <div className="flow-root">
-                <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
+                <button 
+                onClick={()=>{
+                  navigate('/register');
+                  setOpen(false);
+                }} 
+                className="-m-2 block p-2 font-medium text-gray-900">
                   Create account
-                </a>
+                </button>
               </div>
             </div>
 
@@ -290,7 +300,7 @@ export default function Header() {
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       <div className="relative flex">
-                        <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
+                        <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-[#b29a76] data-[open]:text-[#b29a76]">
                           {category.name}
                         </PopoverButton>
                       </div>
@@ -372,7 +382,7 @@ export default function Header() {
                     Sign in
                   </button>
                   <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                  <button href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                  <button onClick={()=>navigate('/register')} className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Create account
                   </button>
                 </div>
@@ -387,7 +397,7 @@ export default function Header() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <button href="#" className="group -m-2 flex items-center p-2">
+                  <button onClick={() => navigate('/cart')} className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       aria-hidden="true"
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
