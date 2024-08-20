@@ -1,7 +1,29 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
 
 const Register = () => {
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    })
+
+    const handleSignup = async (e) => {
+      e.preventDefault();
+      console.log({formData})
+      try{
+        const response = await axios.post("http://localhost:5454/auth/signup", formData);
+        console.log(response.data);
+        navigate('/signin');
+      }
+      catch(e){
+        console.error("Register Failed!", e);
+      }
+
+    };
   
   return (
     <div className="flex justify-center items-center">
@@ -9,12 +31,32 @@ const Register = () => {
       <h1 className="text-center text-4xl font-bold mb-6">Create Account</h1>
         <form
           className="px-8 py-10 w-full"
+          onSubmit={handleSignup}
         >
+
           <div className="mb-4">
           <input
             type="text"
             className="w-full border p-4"
-            placeholder="Name"
+            placeholder="First Name"
+            name="firstName"
+            value={formData.firstName}
+            onChange={(e) => {
+              setFormData({ ...formData, firstName: e.target.value });
+            }}
+          />
+          </div>
+
+          <div className="mb-4">
+          <input
+            type="text"
+            className="w-full border p-4"
+            placeholder="Last Name"
+            name="lastName"
+            value={formData.lastName}
+            onChange={(e) => {
+              setFormData({ ...formData, lastName: e.target.value });
+            }}
           />
           </div>
           
@@ -23,6 +65,11 @@ const Register = () => {
             type="text"
             className="w-full border p-4"
             placeholder="Email"
+            name="email"
+            value={formData.email}
+            onChange={(e) => {
+              setFormData({ ...formData, email: e.target.value });
+            }}
           />
           </div>
           
@@ -31,6 +78,11 @@ const Register = () => {
             type="password"
             className="w-full border p-4"
             placeholder="Password"
+            name="password"
+            value={formData.password}
+            onChange={(e) => {
+              setFormData({ ...formData, password: e.target.value });
+            }}
           />
           </div>
           

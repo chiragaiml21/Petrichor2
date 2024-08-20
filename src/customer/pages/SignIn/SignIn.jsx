@@ -1,19 +1,43 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
 
 function SignIn() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  })
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log({formData})
+    try{
+      const response = await axios.post("http://localhost:5454/auth/signin", formData);
+      console.log(response.data);
+      navigate('/');
+    }
+    catch(e){
+      console.error("Login Failed!", e);
+    }
+
+  };
 
   return (
     <div className="flex justify-center items-center">
       <div className="sm:w-2/3 lg:w-4/12 py-28">
         <h1 className="text-center text-4xl font-bold mb-6">Login</h1>
-        <form className="px-8 py-10 w-full">
+        <form className="px-8 py-10 w-full" onSubmit={handleLogin}>
           <div className="mb-4">
             <input
               className="w-full border p-4"
               id="email"
               placeholder="example@example.com"
               type="email"
+              value={formData.email}
+              onChange={(e) => {
+                setFormData({ ...formData, email: e.target.value });
+              }}
               required
             />
           </div>
@@ -23,6 +47,10 @@ function SignIn() {
               id="password"
               placeholder="••••••••"
               type="password"
+              value={formData.password}
+              onChange={(e) => {
+                setFormData({ ...formData, password: e.target.value });
+              }}
               required
             />
           </div>
