@@ -8,6 +8,8 @@ function HomePage() {
       <HomeCarousel/>
       <ProductCategoriesComponent/>
       <ProductCarousel/>
+      <ProductCarousel/>
+      <ProductCarousel/>
     </>
   )
 }

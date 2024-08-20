@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ProductCard = ({ title, description, price, imageUrl, link }) => (
-  <a href={link} className="group block w-72 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+const ProductCard = ({ title, description, price, imageUrl}) => (
+  <div className="group block w-72 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
     <div className="relative aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200">
       <img
         src={imageUrl}
@@ -15,7 +15,7 @@ const ProductCard = ({ title, description, price, imageUrl, link }) => (
       <p className="text-base text-gray-900 mt-1">{description}</p>
       <p className="text-lg font-medium text-gray-900 mt-2">${price.toFixed(2)}</p>
     </div>
-  </a>
+  </div>
 );
 
 export default ProductCard;
