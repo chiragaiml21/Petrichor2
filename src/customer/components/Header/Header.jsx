@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import {
   Dialog,
   DialogBackdrop,
@@ -15,7 +15,7 @@ import {
   TabPanel,
   TabPanels,
 } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 
 import logo from '../../../assets/LOGO.png'
 import product1 from '../../../assets/Product1.jpeg'
@@ -130,7 +130,21 @@ const navigation = {
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    setIsAuthenticated(false);
+    navigate('/');
+  };
 
   return (
     <div className="bg-white relative z-50">
@@ -181,7 +195,7 @@ export default function Header() {
                           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                             <img alt={item.imageAlt} src={item.imageSrc} className="object-cover object-center" />
                           </div>
-                          <button  onClick={()=>setOpen(false)} className="mt-6 block font-medium text-gray-900">
+                          <button onClick={() => setOpen(false)} className="mt-6 block font-medium text-gray-900">
                             <span aria-hidden="true" className="absolute inset-0 z-10" />
                             {item.name}
                           </button>
@@ -203,7 +217,7 @@ export default function Header() {
                         >
                           {section.items.map((item) => (
                             <li key={item.name} className="flow-root">
-                              <button onClick={()=>setOpen(false)} className="-m-2 block p-2 text-gray-500">
+                              <button onClick={() => setOpen(false)} className="-m-2 block p-2 text-gray-500">
                                 {item.name}
                               </button>
                             </li>
@@ -227,26 +241,27 @@ export default function Header() {
             </div>
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-              <div className="flow-root">
-                <button 
-                onClick={()=>{
-                  navigate('/signin');
-                  setOpen(false);
-                }} 
-                className="-m-2 block p-2 font-medium text-gray-900">
-                  Sign in
-                </button>
-              </div>
-              <div className="flow-root">
-                <button 
-                onClick={()=>{
-                  navigate('/register');
-                  setOpen(false);
-                }} 
-                className="-m-2 block p-2 font-medium text-gray-900">
-                  Create account
-                </button>
-              </div>
+              {isAuthenticated ? (
+                <>
+                  <div className="-m-2 block p-2 font-medium text-gray-900">
+                    <button onClick={()=>navigate('/profile')} className="text-gray-700 font-medium hover:text-gray-900">
+                      Profile
+                    </button>
+                  </div>
+                  <button onClick={handleLogout} className="text-gray-700 font-medium hover:text-gray-900">
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button onClick={() => { navigate('/signin'); setOpen(false); }} className="-m-2 block p-2 font-medium text-gray-900">
+                    Sign in
+                  </button>
+                  <button onClick={() => { navigate('/register'); setOpen(false); }} className="-m-2 block p-2 font-medium text-gray-900">
+                    Create account
+                  </button>
+                </>
+              )}
             </div>
 
             {/* <div className="border-t border-gray-200 px-4 py-6">
@@ -377,15 +392,26 @@ export default function Header() {
               </PopoverGroup>
 
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <button onClick={()=>navigate('/signin')} className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
-                  </button>
-                  <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                  <button onClick={()=>navigate('/register')} className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Create account
-                  </button>
-                </div>
+                {isAuthenticated ? (
+                  <div className="flex lg:ml-6 hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                    <button onClick={()=>navigate('/profile')} className="p-2 text-gray-400 hover:text-gray-500">
+                      <span className="sr-only">User</span>
+                      <UserCircleIcon aria-hidden="true" className="h-6 w-6" />
+                    </button>
+                  </div>
+                ) :
+                  (
+                    <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                      <button onClick={() => navigate('/signin')} className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                        Sign in
+                      </button>
+                      <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
+                      <button onClick={() => navigate('/register')} className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                        Create account
+                      </button>
+                    </div>
+                  )}
+
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
